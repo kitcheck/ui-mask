@@ -1,7 +1,7 @@
 /*!
  * angular-ui-mask
  * https://github.com/angular-ui/ui-mask
- * Version: 1.8.7 - 2018-03-15T13:01:33.144Z
+ * Version: 1.8.7 - 2018-03-15T12:56:16.295Z
  * License: MIT
  */
 
@@ -16,7 +16,7 @@ angular.module('ui.mask', [])
             maskDefinitions: {
                 '9': /\d/,
                 'A': /[a-zA-Z]/,
-                '*': /[a-zA-Z0-9\-\.\_]/
+                '*': /./
             },
             clearOnBlur: true,
             clearOnBlurPlaceholder: false,
