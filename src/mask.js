@@ -6,7 +6,7 @@ angular.module('ui.mask', [])
             maskDefinitions: {
                 '9': /\d/,
                 'A': /[a-zA-Z]/,
-                '*': /./
+                '*': /[a-zA-Z0-9\-\.\_]/
             },
             clearOnBlur: true,
             clearOnBlurPlaceholder: false,
@@ -342,7 +342,7 @@ angular.module('ui.mask', [])
                                     return placeholder[i];
                                 } else {
                                     defaultPlaceholderChar = angular.isDefined(iAttrs.uiMaskPlaceholderChar) && iAttrs.uiMaskPlaceholderChar ? iAttrs.uiMaskPlaceholderChar : '_';
-                                    return (defaultPlaceholderChar.toLowerCase() === 'space') ? ' ' : defaultPlaceholderChar[0];
+                                    return (defaultPlaceholderChar.toLowerCase() === 'space') ? ' ' : (defaultPlaceholderChar.toLowerCase() === 'none') ? '' : defaultPlaceholderChar[0];
                                 }
                             }
 
@@ -460,7 +460,7 @@ angular.module('ui.mask', [])
                                     // Angular uses html element and calls setViewValue(element.value.trim()), setting it to the trimmed mask
                                     // when it should be empty
                                     var currentVal = iElement.val();
-                                    var isTemporarilyEmpty = value === '' && currentVal && angular.isDefined(iAttrs.uiMaskPlaceholderChar) && iAttrs.uiMaskPlaceholderChar === 'space';
+                                    var isTemporarilyEmpty = value === '' && currentVal && angular.isDefined(iAttrs.uiMaskPlaceholderChar) && (iAttrs.uiMaskPlaceholderChar === 'space' || iAttrs.uiMaskPlaceholderChar === 'none');
                                     if(isTemporarilyEmpty) {
                                         iElement.val('');
                                     }
